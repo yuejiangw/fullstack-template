@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @MapperScan("com.yuejiangw.backend.mapper")
-public class UserCenterBackendApplication {
+public class BackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserCenterBackendApplication.class, args);
+        SpringApplication.run(BackendApplication.class, args);
     }
 
 }
