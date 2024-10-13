@@ -18,3 +18,6 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值
   configuration:
     map-underscore-to-camel-case: false
+springdoc:
+  api-docs:
+    path: /api-docs

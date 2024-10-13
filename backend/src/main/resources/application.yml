@@ -18,3 +18,8 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值
   configuration:
     map-underscore-to-camel-case: false
+springdoc:
+  swagger-ui:
+    path: /swagger
+  api-docs:
+    path: /api-docs
