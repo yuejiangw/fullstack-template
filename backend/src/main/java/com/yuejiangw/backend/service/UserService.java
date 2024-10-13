@@ -1,6 +1,6 @@
 package com.yuejiangw.backend.service;
 
-import com.yuejiangw.backend.model.domain.User;
+import com.yuejiangw.backend.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
 

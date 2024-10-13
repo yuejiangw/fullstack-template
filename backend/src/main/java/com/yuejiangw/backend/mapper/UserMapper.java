@@ -1,6 +1,6 @@
 package com.yuejiangw.backend.mapper;
 
-import com.yuejiangw.backend.model.domain.User;
+import com.yuejiangw.backend.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

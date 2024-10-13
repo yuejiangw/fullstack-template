@@ -1,7 +1,7 @@
 package com.yuejiangw.backend.service;
 
 import com.yuejiangw.backend.exception.CustomException;
-import com.yuejiangw.backend.model.domain.User;
+import com.yuejiangw.backend.model.entity.User;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

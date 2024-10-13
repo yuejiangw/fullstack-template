@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yuejiangw.backend.common.ErrorCode;
 import com.yuejiangw.backend.exception.CustomException;
-import com.yuejiangw.backend.model.domain.User;
+import com.yuejiangw.backend.model.entity.User;
 import com.yuejiangw.backend.service.UserService;
 import com.yuejiangw.backend.mapper.UserMapper;
 import jakarta.annotation.Resource;

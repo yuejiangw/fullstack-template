@@ -1,7 +1,7 @@
 package com.yuejiangw.backend.common;
 
 import com.yuejiangw.backend.exception.CustomException;
-import com.yuejiangw.backend.model.domain.User;
+import com.yuejiangw.backend.model.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 
 import static com.yuejiangw.backend.common.constants.UserConstant.ADMIN_ROLE;

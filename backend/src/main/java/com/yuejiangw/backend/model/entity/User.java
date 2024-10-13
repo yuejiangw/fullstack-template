@@ -1,4 +1,4 @@
-package com.yuejiangw.backend.model.domain;
+package com.yuejiangw.backend.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
