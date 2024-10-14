@@ -3,10 +3,9 @@ import { Footer } from '@/components';
 import { register } from '@/services/ant-design-pro/api';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
-import { Helmet, history, useModel } from '@umijs/max';
+import { Helmet, history } from '@umijs/max';
 import { Alert, Button, message, Tabs } from 'antd';
 import React, { useState } from 'react';
-import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
 
 const RegisterMessage: React.FC<{
@@ -26,19 +25,7 @@ const RegisterMessage: React.FC<{
 
 const Register: React.FC = () => {
   const [type, setType] = useState<string>('account');
-  const { initialState, setInitialState } = useModel('@@initialState');
   const { styles } = useAuthStyles();
-  const fetchUserInfo = async () => {
-    const userInfo = await initialState?.fetchUserInfo?.();
-    if (userInfo) {
-      flushSync(() => {
-        setInitialState((s) => ({
-          ...s,
-          currentUser: userInfo,
-        }));
-      });
-    }
-  };
 
   const handleSubmit = async (values: API.RegisterParams) => {
     const { userAccount, userPassword, checkPassword } = values;
@@ -63,14 +50,12 @@ const Register: React.FC = () => {
       if (response.data) {
         const defaultRegisterSuccessMessage = 'Register Successful!';
         message.success(defaultRegisterSuccessMessage);
-        await fetchUserInfo();
         history.push('/user/login?redirect');
         return;
       }
     } catch (error: any) {
       // 如果失败去设置用户错误信息
       const defaultRegisterFailureMessage = 'Register Failed, please try again!';
-      console.log(error);
       message.error(error.message ?? defaultRegisterFailureMessage);
     }
   };
