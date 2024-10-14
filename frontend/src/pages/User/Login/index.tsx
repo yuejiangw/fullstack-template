@@ -1,17 +1,17 @@
-import { useAuthStyles } from '@/common/styles';
-import { Footer } from '@/components';
-import { login } from '@/services/ant-design-pro/api';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { LoginForm, ProFormText } from '@ant-design/pro-components';
-import { Helmet, history, useModel } from '@umijs/max';
-import { Alert, Button, Tabs, message } from 'antd';
-import React, { useState } from 'react';
-import { flushSync } from 'react-dom';
+import {useAuthStyles} from '@/common/styles';
+import {Footer} from '@/components';
+import {login} from '@/services/ant-design-pro/api';
+import {LockOutlined, UserOutlined} from '@ant-design/icons';
+import {LoginForm, ProFormText} from '@ant-design/pro-components';
+import {Helmet, history, useModel} from '@umijs/max';
+import {Alert, Button, message, Tabs} from 'antd';
+import React, {useState} from 'react';
+import {flushSync} from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
 
 const LoginMessage: React.FC<{
   content: string;
-}> = ({ content }) => {
+}> = ({content}) => {
   return (
     <Alert
       style={{
@@ -25,10 +25,10 @@ const LoginMessage: React.FC<{
 };
 
 const Login: React.FC = () => {
-  const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
+  const [userLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
-  const { initialState, setInitialState } = useModel('@@initialState');
-  const { styles } = useAuthStyles();
+  const {initialState, setInitialState} = useModel('@@initialState');
+  const {styles} = useAuthStyles();
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
     console.log('userInfo: ' + userInfo);
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     try {
       // 登录
-      const response = await login({ ...values, type });
+      const response = await login({...values, type});
       if (response) {
         const defaultLoginSuccessMessage = 'Login Successful!';
         message.success(defaultLoginSuccessMessage);
@@ -54,15 +54,13 @@ const Login: React.FC = () => {
         history.push(urlParams.get('redirect') || '/');
         return;
       }
-      // 如果失败去设置用户错误信息
-      setUserLoginState(response);
     } catch (error) {
       const defaultLoginFailureMessage = 'Login Failed, please try again!';
       message.error(defaultLoginFailureMessage);
     }
   };
 
-  const { status, type: loginType } = userLoginState;
+  const {status, type: loginType} = userLoginState;
   return (
     <div className={styles.container}>
       <Helmet>
@@ -86,7 +84,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src="/logo.svg" />}
+          logo={<img alt="logo" src="/logo.svg"/>}
           title="User Center"
           subTitle={'A fullstack project based on SpringBoot and React'}
           initialValues={{
@@ -109,7 +107,7 @@ const Login: React.FC = () => {
           />
 
           {status === 'error' && loginType === 'account' && (
-            <LoginMessage content={'错误的用户名和密码(admin/ant.design)'} />
+            <LoginMessage content={'错误的用户名和密码(admin/ant.design)'}/>
           )}
           {type === 'account' && (
             <>
@@ -117,7 +115,7 @@ const Login: React.FC = () => {
                 name="userAccount"
                 fieldProps={{
                   size: 'large',
-                  prefix: <UserOutlined />,
+                  prefix: <UserOutlined/>,
                 }}
                 placeholder={'Username: helloworld'}
                 rules={[
@@ -131,7 +129,7 @@ const Login: React.FC = () => {
                 name="userPassword"
                 fieldProps={{
                   size: 'large',
-                  prefix: <LockOutlined />,
+                  prefix: <LockOutlined/>,
                 }}
                 placeholder={'Password: helloworld'}
                 rules={[
@@ -154,7 +152,7 @@ const Login: React.FC = () => {
               <Button
                 type={'link'}
                 href={'/user/register'}
-                style={{ float: 'right', marginBottom: '20px' }}
+                style={{float: 'right', marginBottom: '20px'}}
               >
                 Register
               </Button>
@@ -162,7 +160,7 @@ const Login: React.FC = () => {
           </div>
         </LoginForm>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 };
